@@ -14,6 +14,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// 99% of this file needs to be refactored :sad:
 func convert(b []byte) string {
     s := make([]string,len(b))
     for i := range b {

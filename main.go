@@ -13,27 +13,19 @@ import (
 
 func main() {
 
-	//err := godotenv.Load(".env")
-
-	//if err != nil {
-	//	log.Fatalf("Some error occured. Err: %s", err)
-	//}
-
 	//gin.SetMode(gin.ReleaseMode)
 
+	// Environment variables
 	port := os.Getenv("PORT")
 	origins := strings.Split(os.Getenv("ORIGINS"), ",")
 
-	if port == "" {
-		port = "8000"
-	}
+	if port == "" { port = "8000" }
 
 	router := gin.New()
 
 	router.Use(gin.Logger())
 	router.Use(cors.New(cors.Config{
-		AllowOrigins: origins,
-//      AllowOrigins:     []string{"*"},
+		AllowOrigins:     origins,
 		AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE", "HEAD", "OPTIONS"},
 		AllowHeaders:     []string{"Origin", "Content-Length", "Content-Type"},
 		AllowCredentials: false,
@@ -43,6 +35,6 @@ func main() {
 	// Initialize component API routes
 	routes.InitUserRoutes(router)
 
-	// Runs the server on port 8000
+	// Starts gin server
 	router.Run(":" + port)
 }
