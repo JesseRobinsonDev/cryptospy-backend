@@ -1,7 +1,6 @@
 package main
 
 import (
-	"log"
 	"os"
 	"strings"
 	"time"
@@ -10,17 +9,15 @@ import (
 	"github.com/gin-gonic/gin"
 
 	"cryptospy-backend/api/users/routes"
-
-	"github.com/joho/godotenv"
 )
 
 func main() {
 
-	err := godotenv.Load(".env")
+	//err := godotenv.Load(".env")
 
-	if err != nil {
-		log.Fatalf("Some error occured. Err: %s", err)
-	}
+	//if err != nil {
+	//	log.Fatalf("Some error occured. Err: %s", err)
+	//}
 
 	//gin.SetMode(gin.ReleaseMode)
 
