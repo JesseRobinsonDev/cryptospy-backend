@@ -25,9 +25,14 @@ func convert(b []byte) string {
     return strings.Join(s,"")
 }
 
-func createTable() {
-	sqlStr := "CREATE TABLE users (user_id SERIAL PRIMARY KEY, tracked_coins TEXT[], joined TIMESTAMP DEFAULT now(), username VARCHAR(16) UNIQUE, pass VARCHAR(256));"
-	fmt.Println(sqlStr)
+func CreateTable() {
+	Conn := config.DatabaseConnect()
+
+	sqlStr := "CREATE TABLE users (user_id SERIAL PRIMARY KEY, tracked_coins TEXT[], date_joined TIMESTAMP DEFAULT now(), username VARCHAR(16) UNIQUE, pass VARCHAR(256));"
+
+	Conn.Exec(context.Background(), sqlStr)
+
+	Conn.Close(context.Background())
 }
 
 func RegisterUser(c *gin.Context) {
