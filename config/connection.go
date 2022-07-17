@@ -3,21 +3,18 @@ package config
 import (
 	"context"
 	"fmt"
-	"log"
 	"os"
 
 	"github.com/jackc/pgx/v4"
-	"github.com/joho/godotenv"
 )
 
+// Creates a connection to the PostgreSQL database on Heroku
 func DatabaseConnect() *pgx.Conn {
-	err := godotenv.Load(".env")
 	
-	if err != nil {
-		log.Fatalf("Some error occured. Err: %s", err)
-	}
+	//godotenv.Load(".env")
 	
 	databaseUrl := os.Getenv("DATABASE_URL")
+
 	conn, err := pgx.Connect(context.Background(), databaseUrl)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Unable to connect to database: %v\n", err)
@@ -27,4 +24,5 @@ func DatabaseConnect() *pgx.Conn {
 	return conn
 }
 
+// Permanent connection for less strenuous tasks 
 var Conn *pgx.Conn = DatabaseConnect()
