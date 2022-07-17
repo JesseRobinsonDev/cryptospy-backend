@@ -11,6 +11,8 @@ import (
 // Creates a connection to the PostgreSQL database on Heroku
 func DatabaseConnect() *pgx.Conn {
 	
+	//godotenv.Load(".env")
+	
 	databaseUrl := os.Getenv("DATABASE_URL")
 
 	conn, err := pgx.Connect(context.Background(), databaseUrl)

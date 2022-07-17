@@ -13,7 +13,9 @@ import (
 
 func main() {
 
-	//gin.SetMode(gin.ReleaseMode)
+	//godotenv.Load(".env")
+
+	gin.SetMode(gin.ReleaseMode)
 
 	// Environment variables
 	port := os.Getenv("PORT")
