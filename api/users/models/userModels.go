@@ -1,9 +1,17 @@
 package models
 
+import "time"
+
 // Used for validating the body fields in "API/user/register"
-type RegisterUserModel struct {
+type RegisterUserRequestModel struct {
 	Username string `json:"username"`
 	Pass     string `json:"pass"`
+}
+
+// Used on successful response in "API/user/register"
+type RegisterUserResponseModel struct {
+	User_ID int    `json:"user_id"`
+	Message string `json:"message"`
 }
 
 // Used for validating the body fields in "API/user/login"
