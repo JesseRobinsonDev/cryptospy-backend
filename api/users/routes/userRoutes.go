@@ -13,7 +13,7 @@ func InitUserRoutes(g *gin.Engine) {
 	// Takes in a Username and Password as the body parameters
 	g.POST("/user/register", controllers.RegisterUser)
 	// Takes in the Username and Password as the body parameters
-	g.GET("/user/login", controllers.LoginUser)
+	g.POST("/user/login", controllers.LoginUser)
 
 	// GET:
 	// Takes in the User Database ID as a url parameter
@@ -22,7 +22,7 @@ func InitUserRoutes(g *gin.Engine) {
 	// DELETE ACCOUNT:
 	// Takes in the User Database ID as a url parameter
 	g.DELETE("/user/delete/:id", controllers.DeleteUser)
-	// Takes in the Username and Oasswird as the body parameters
+	// Takes in the Username and Password as the body parameters
 	g.DELETE("/user/delete", controllers.DeleteUserByName)
 
 	// COIN TRACKING:

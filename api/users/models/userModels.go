@@ -20,7 +20,8 @@ type LoginUserResponseModel struct {
 
 // Used on successful response in "API/user/:id/get"
 type GetUserModel struct {
-	User_ID       int      `json:"user_id"`
-	Username      string   `json:"username"`
-	Tracked_Coins []string `json:"tracked_coins"`
+	User_ID       int       `json:"user_id"`
+	Username      string    `json:"username"`
+	Tracked_Coins []string  `json:"tracked_coins"`
+	Date_Joined   time.Time `json:"date_joined"`
 }
